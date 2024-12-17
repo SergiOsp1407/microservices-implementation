@@ -9,9 +9,9 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+    #show-sql: true
   datasource:
-    url: jdbc:mysql://localhost:3306/mydatabase
-    username: myuser
-    password: secret
+    url: jdbc:mysql://localhost:3306/microservices_db
+    username: root
+    password: toor
     driver-class-name: com.mysql.cj.jdbc.Driver
