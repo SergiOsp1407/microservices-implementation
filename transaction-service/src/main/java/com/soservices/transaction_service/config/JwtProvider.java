@@ -1,5 +1,6 @@
 package com.soservices.transaction_service.config;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.security.core.Authentication;
@@ -30,6 +31,17 @@ public class JwtProvider {
         return jwt;
 
     }
+
+    public static String getEmailFromJwtToken(String jwt) {
+        jwt = jwt.substring(7);
+        Claims claimsJwt = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJwt(jwt).getBody();
+
+        String email = String.valueOf(claimsJwt.get("email"));
+
+        return  email;
+    }
+
+
 
     private static String populateAuthorities(Collection<? extends GrantedAuthority> collection) {
 
